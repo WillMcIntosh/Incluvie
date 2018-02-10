@@ -6,10 +6,20 @@ import Rating from './Rating';
 class App extends Component {
   constructor() {
     super();
+    this.onChangeRating = this.onChangeRating.bind(this);
     this.state = {
-      numberOfStars: {}
+      numberOfStars: 0,
+      displayStars: 6
     };
   }
+
+  onChangeRating = (newRating) => {
+    const numberOfStars = newRating -6;
+    console.log(numberOfStars);
+    this.setState({ numberOfStars, 
+    displayStars: newRating });
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,7 +28,9 @@ class App extends Component {
           <h1 className="App-title">Test Ratings Component</h1>
         </header>
         <Rating 
-          numberOfStars={3}
+          numberOfStars={this.state.numberOfStars}
+          displayStars={this.state.displayStars}
+          onChangeRating={this.onChangeRating}
         />
       </div>
     );

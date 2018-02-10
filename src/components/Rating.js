@@ -2,19 +2,6 @@ import React from 'react';
 import ReactStars from 'react-stars';
 
 class Rating extends React.Component {
-  constructor() {
-    super();
-    this.onChangeRating = this.onChangeRating.bind(this);
-    this.state = {
-      numberOfStars: 0
-    }
-  }
-
-  onChangeRating = (newRating) => {
-    const correctRating = newRating -6;
-    console.log(correctRating);
-    // this.setState({ numberOfStars: correctRating });
-  }
 
   render() {
     return (
@@ -22,12 +9,12 @@ class Rating extends React.Component {
         <h2>Your rating: {this.props.numberOfStars}</h2>
         <ReactStars
           count={11}
-          value={6}
+          value={this.props.displayStars}
           half={false}
           edit={true}
           size={24}
           color2={'#ffd700'}
-          onChange={this.onChangeRating}
+          onChange={this.props.onChangeRating}
         />
       </div>
     )
