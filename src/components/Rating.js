@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactStars from 'react-stars';
+import RatingStars from 'react-rating';
 
 class Rating extends React.Component {
 
@@ -7,15 +7,15 @@ class Rating extends React.Component {
     return (
       <div className="rating-wrap">
         <h2>Your rating: {this.props.numberOfStars}</h2>
-        <ReactStars
-          count={11}
-          value={this.props.displayStars}
-          half={false}
-          edit={true}
-          size={24}
-          color2={'#ffd700'}
+        <RatingStars
+          start={1}
+          stop={-5}
+          step={-1}
+          initialRating={this.props.numberOfStars}
+          direction={'rtl'}
           onChange={this.props.onChangeRating}
         />
+        <RatingStars />
       </div>
     )
   }
