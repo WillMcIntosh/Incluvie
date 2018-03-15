@@ -15,7 +15,10 @@ class Rating extends React.Component {
           direction={'rtl'}
           onChange={this.props.onChangeRating}
         />
-        <RatingStars />
+        <RatingStars
+          initialRating={this.props.numberOfStars}
+          onChange={this.props.onChangeRating}
+        />
       </div>
     )
   }
