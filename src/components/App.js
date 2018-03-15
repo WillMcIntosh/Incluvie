@@ -8,16 +8,17 @@ class App extends Component {
     super();
     this.onChangeRating = this.onChangeRating.bind(this);
     this.state = {
-      numberOfStars: 0,
-      displayStars: 6
+      numberOfStars: 0, 
+      readOnly: false
     };
   }
 
-  onChangeRating = (newRating) => {
-    const numberOfStars = newRating -6;
-    console.log(numberOfStars);
-    this.setState({ numberOfStars, 
-    displayStars: newRating });
+  onChangeRating(value){
+    let numberOfStars = {...this.state.numberOfStars};
+    // console.log(numberOfStars);
+    numberOfStars = value;
+    this.setState({ numberOfStars:value 
+    });
   }
 
   render() {
@@ -29,7 +30,7 @@ class App extends Component {
         </header>
         <Rating 
           numberOfStars={this.state.numberOfStars}
-          displayStars={this.state.displayStars}
+          readonly={this.state.readOnly}
           onChangeRating={this.onChangeRating}
         />
       </div>
